@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Oliviero Pizza & Pasta — Pizzeria italienne à Romainville. Livraison gratuite, viandes halal. 7j/7." />
+<title>Oliviero — Pizza & Pasta · Romainville</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg-cream: #faf6ee;
+  --bg-white: #ffffff;
+  --bg-warm:  #f3ede1;
+
+  --bg-deep:  #0d0d0d;
+  --bg-rich:  #161616;
+
+  --line:        rgba(20,20,20,0.08);
+  --line-mid:    rgba(20,20,20,0.14);
+  --line-strong: rgba(20,20,20,0.22);
+  --line-dark:   rgba(255,255,255,0.10);
+
+  --text:       #1a1a1a;
+  --text-soft:  #4a4a48;
+  --text-mute:  #7a7670;
+  --text-light: #f4f1ea;
+  --text-light-soft: #c7c2b8;
+
+  --gold:        #b8945c;
+  --gold-light:  #d4b97c;
+  --it-green:    #4a8b2c;
+  --it-green-bright: #6fbf3a;
+  --it-red:      #c8362b;
+  --it-red-soft: #e85a4d;
+
+  --shadow-sm: 0 2px 8px rgba(20,15,5,0.04);
+  --shadow-md: 0 12px 32px rgba(20,15,5,0.08);
+  --shadow-lg: 0 30px 80px rgba(20,15,5,0.12);
+
+  --maxw: 1240px;
+}
+
+body {
+  background: var(--bg-cream);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(74,139,44,0.04), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(200,54,43,0.03), transparent 60%);
+  z-index: 0;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.script { font-family: 'Pinyon Script', cursive; font-weight: 400; }
+.display { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -0.01em; }
+.eyebrow {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.32em;
+  font-size: 0.78rem;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+section { padding: 110px 0; position: relative; }
+
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background .35s ease, padding .35s ease, backdrop-filter .35s ease, color .35s;
+  color: var(--text-light);
+}
+.nav.scrolled {
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+.nav__brand {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav__menu {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+.nav__menu a {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  position: relative;
+  transition: color .25s;
+  opacity: 0.85;
+}
+.nav__menu a:hover { color: var(--it-green-bright); opacity: 1; }
+.nav.scrolled .nav__menu a:hover { color: var(--it-green); }
+.nav__menu a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width .3s;
+}
+.nav__menu a:hover::after { width: 100%; }
+
+.nav__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--it-green-bright);
+  color: #0a0a0a;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: transform .25s, background .25s, color .25s;
+}
+.nav.scrolled .nav__cta { background: var(--it-green); color: #fff; }
+.nav__cta:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+.burger { display: none; }
+
+@media (max-width: 880px) {
+  .nav__menu { display: none; }
+  .nav__cta { display: none; }
+  .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+  }
+  .burger span { width: 26px; height: 2px; background: currentColor; display: block; transition: .3s; }
+  .nav__menu.open {
+    display: flex;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: rgba(250,246,238,0.98);
+    color: var(--text);
+    backdrop-filter: blur(14px);
+    flex-direction: column;
+    padding: 30px;
+    border-top: 1px solid var(--line);
+    gap: 20px;
+  }
+}
+
+.flag-mini {
+  display: inline-flex;
+  width: 36px; height: 4px;
+  border-radius: 1px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.flag-mini span { flex: 1; }
+.flag-mini span:nth-child(1) { background: var(--it-green-bright); }
+.flag-mini span:nth-child(2) { background: #f4f1ea; }
+.flag-mini span:nth-child(3) { background: var(--it-red); }
+
+/* HERO sombre */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 140px 28px 120px;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text-light);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(212,185,124,0.08), transparent 60%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-rich) 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 60px;
+  background: var(--bg-cream);
+  clip-path: polygon(0 100%, 100% 100%, 100% 60%, 0 100%);
+}
+
+.hero__deco { position: absolute; pointer-events: none; opacity: 0.85; }
+.hero__deco--1 { top: 18%; left: 8%; transform: rotate(-15deg); width: 90px; }
+.hero__deco--2 { top: 22%; right: 10%; transform: rotate(20deg); width: 70px; }
+.hero__deco--3 { bottom: 18%; left: 14%; transform: rotate(35deg); width: 60px; }
+.hero__dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--it-red);
+  box-shadow: 0 0 14px rgba(200,54,43,0.5);
+}
+.hero__dot--1 { top: 30%; left: 18%; }
+.hero__dot--2 { top: 60%; right: 12%; }
+.hero__dot--3 { bottom: 28%; left: 40%; width: 6px; height: 6px; background: var(--it-green-bright); }
+
+.hero__inner { position: relative; z-index: 2; max-width: 920px; }
+.hero__eyebrow {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  margin-bottom: 26px;
+  color: var(--gold-light);
+  animation: fadeUp .8s ease both;
+}
+.hero__title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(5rem, 14vw, 11rem);
+  line-height: 0.95;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  animation: fadeUp 1s .15s ease both;
+}
+.hero__title .flag-mini { width: 80px; height: 5px; transform: translateY(-12px); margin-left: 8px; }
+.hero__sub {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.5em;
+  font-size: 1.1rem;
+  color: #f5e9c8;
+  margin-bottom: 30px;
+  animation: fadeUp 1s .3s ease both;
+}
+.hero__lead {
+  max-width: 620px;
+  margin: 0 auto 44px;
+  font-size: 1.18rem;
+  color: var(--text-light-soft);
+  font-style: italic;
+  animation: fadeUp 1s .45s ease both;
+}
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeUp 1s .6s ease both;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.95rem;
+  transition: transform .25s, background .25s, color .25s, box-shadow .25s, border-color .25s;
+}
+.btn--primary {
+  background: var(--it-green-bright);
+  color: #0a0a0a;
+  box-shadow: 0 12px 28px rgba(111,191,58,0.25);
+}
+.btn--primary:hover { background: #f5e9c8; transform: translateY(-2px); }
+.btn--ghost {
+  background: transparent;
+  color: var(--text-light);
+  border: 1px solid rgba(255,255,255,0.22);
+}
+.btn--ghost:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+.hero__scroll {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.4em;
+  font-size: 0.7rem;
+  color: var(--text-light-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+.hero__scroll::after {
+  content: "";
+  width: 1px; height: 36px;
+  background: linear-gradient(180deg, var(--gold-light), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: .5; }
+  50% { transform: scaleY(1.4); opacity: 1; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* OFFRES — fond crème */
+.offers { background: var(--bg-cream); }
+.offers__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.offer-card {
+  position: relative;
+  padding: 50px 40px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: 6px;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s, border-color .35s, box-shadow .35s;
+}
+.offer-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--it-green);
+  box-shadow: var(--shadow-md);
+}
+.offer-card__label {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.offer-card__deal {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  line-height: 1.2;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.offer-card__deal em { font-style: normal; color: var(--it-green); }
+.offer-card__note { color: var(--text-mute); font-size: 0.95rem; font-style: italic; }
+.offer-card__icon {
+  position: absolute;
+  top: 30px; right: 30px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.15em;
+  font-size: 0.78rem;
+  color: var(--it-red);
+  border: 1px solid var(--it-red);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--bg-white);
+}
+@media (max-width: 760px) {
+  .offers__grid { grid-template-columns: 1fr; }
+  .offer-card { padding: 36px 26px; }
+}
+
+.section-head { text-align: center; margin-bottom: 70px; }
+.section-head__eyebrow { margin-bottom: 14px; display: inline-block; }
+.section-head__title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+.section-head__lead {
+  max-width: 580px;
+  margin: 0 auto;
+  color: var(--text-soft);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.section-head__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 18px 0 8px;
+}
+.section-head__divider span.line {
+  height: 1px;
+  background: var(--line-strong);
+  width: 60px;
+}
+.section-head__divider .flag-mini { width: 50px; height: 4px; }
+
+/* PIZZAS — présentation compacte par palier de tarifs */
+.pizzas {
+  background: var(--bg-white);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.pizza-formats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  color: var(--text-mute);
+}
+.pizza-formats span strong {
+  color: var(--gold);
+  font-weight: 400;
+  margin-right: 6px;
+}
+.pizza-formats .sep {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--line-strong);
+}
+
+.pizza-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line-mid);
+}
+
+.pizza-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--line);
+  transition: background .25s;
+}
+.pizza-card:nth-child(odd) { border-right: 1px solid var(--line); }
+.pizza-card:hover { background: var(--bg-cream); }
+
+.pizza-card__num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  padding-top: 4px;
+  min-width: 22px;
+}
+.pizza-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pizza-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pizza-card__name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.12rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+.pizza-card__prices {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  color: var(--text);
+  display: inline-flex;
+  gap: 12px;
+  white-space: nowrap;
+}
+.pizza-card__prices span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.pizza-card__prices small {
+  font-size: 0.62rem;
+  color: var(--text-mute);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.pizza-card__desc {
+  color: var(--text-mute);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 880px) {
+  .pizza-grid { grid-template-columns: 1fr; }
+  .pizza-card:nth-child(odd) { border-right: none; }
+  .pizza-card { padding: 22px 18px; }
+}
+
+.halal-note {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-mid);
+  font-style: italic;
+  color: var(--text-mute);
+  font-size: 0.95rem;
+}
+.halal-note strong { color: var(--it-green); font-style: normal; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.18em; }
+
+/* CARTE — fond crème */
+.menu-grid { background: var(--bg-cream); }
+.menu-blocks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+@media (max-width: 880px) { .menu-blocks { grid-template-columns: 1fr; } }
+
+.menu-card {
+  background: var(--bg-white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .35s, transform .35s, box-shadow .35s;
+}
+.menu-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.menu-card__header {
+  padding: 30px 32px 18px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+.menu-card__title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 3rem;
+  line-height: 0.9;
+  color: var(--text);
+}
+.menu-card__price-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--it-green);
+  border: 1.5px solid var(--it-green);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.menu-card__sub {
+  padding: 14px 32px 0;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+.menu-card__items { list-style: none; padding: 18px 32px 32px; }
+.menu-card__items li {
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--line-mid);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.menu-card__items li:last-child { border-bottom: none; }
+.menu-card__items .name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text);
+}
+.menu-card__items .name span:last-child {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+.menu-card__items .desc { font-size: 0.95rem; color: var(--text-mute); line-height: 1.45; }
+
+/* TACOS & SANDWICHS — fond beige doux */
+.street-food {
+  background: var(--bg-warm);
+  border-top: 1px solid var(--line);
+}
+
+.street-food__block { margin-bottom: 90px; }
+.street-food__block:last-child { margin-bottom: 0; }
+
+.street-food__title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(2.6rem, 5vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.street-food__subtitle {
+  text-align: center;
+  color: var(--text-soft);
+  font-style: italic;
+  font-size: 1.05rem;
+  margin-bottom: 44px;
+}
+
+/* Tacos — paliers de prix */
+.tacos-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+.tacos-tier {
+  text-align: center;
+  padding: 28px 18px;
+  background: var(--bg-white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+.tacos-tier:hover {
+  transform: translateY(-4px);
+  border-color: var(--it-green);
+  box-shadow: var(--shadow-md);
+}
+.tacos-tier__count {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  color: var(--text-mute);
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+}
+.tacos-tier__price {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3vw, 2rem);
+  color: var(--it-green);
+}
+@media (max-width: 560px) {
+  .tacos-tiers { grid-template-columns: 1fr; gap: 12px; }
+  .tacos-tier { padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+  .tacos-tier__count { margin-bottom: 0; }
+}
+
+/* Tacos — options viandes & sauces */
+.tacos-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 760px) { .tacos-options { grid-template-columns: 1fr; } }
+
+.tacos-options__card {
+  background: var(--bg-white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 32px 30px;
+  box-shadow: var(--shadow-sm);
+}
+.tacos-options__title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.24em;
+  font-size: 0.82rem;
+  color: var(--gold);
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.tacos-options__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+}
+.tacos-options__list li {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--text);
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tacos-options__list li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--it-red);
+  flex-shrink: 0;
+}
+
+/* Sandwichs */
+.sandwichs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 880px) { .sandwichs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .sandwichs-grid { grid-template-columns: 1fr; } }
+
+.sandwich-card {
+  background: var(--bg-white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s, border-color .3s, box-shadow .3s;
+}
+.sandwich-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: var(--shadow-md);
+}
+.sandwich-card__name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 22px;
+  color: var(--text);
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line-mid);
+}
+.sandwich-card__prices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sandwich-card__price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.1em;
+}
+.sandwich-card__price small {
+  color: var(--text-mute);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+.sandwich-card__price strong {
+  color: var(--gold);
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* TEX MEX — fond blanc */
+.texmex { background: var(--bg-white); border-top: 1px solid var(--line); }
+.texmex-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+@media (max-width: 880px) { .texmex-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .texmex-grid { grid-template-columns: 1fr; } }
+
+.texmex-card {
+  background: var(--bg-cream);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  transition: border-color .3s, transform .3s, background .3s, box-shadow .3s;
+}
+.texmex-card:hover {
+  border-color: var(--it-red);
+  transform: translateY(-4px);
+  background: var(--bg-white);
+  box-shadow: var(--shadow-md);
+}
+.texmex-card__icon {
+  width: 56px; height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-mid);
+  color: var(--gold);
+  transition: border-color .3s, background .3s;
+}
+.texmex-card__icon svg { width: 26px; height: 26px; }
+.texmex-card:hover .texmex-card__icon {
+  border-color: var(--it-red);
+  color: var(--it-red);
+}
+.texmex-card__name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.texmex-card__prices {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.12em;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.texmex-card__prices span { display: flex; justify-content: space-between; gap: 12px; }
+.texmex-card__prices strong { color: var(--gold); font-weight: 400; }
+
+/* SWEETS — fond beige doux */
+.sweets { background: var(--bg-warm); border-top: 1px solid var(--line); }
+.sweets-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 880px) { .sweets-grid { grid-template-columns: 1fr; } }
+
+/* CONTACT sombre */
+.contact {
+  background:
+    radial-gradient(ellipse at top right, rgba(111,191,58,0.10), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(200,54,43,0.08), transparent 60%),
+    var(--bg-deep);
+  color: var(--text-light);
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 60px;
+  background: var(--bg-warm);
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 60%);
+}
+.contact .container { padding-top: 40px; }
+
+.contact-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 880px) { .contact-wrap { grid-template-columns: 1fr; gap: 40px; } }
+
+.contact-info h2 {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  margin: 14px 0 24px;
+  color: var(--text-light);
+}
+.contact-info > .eyebrow { color: var(--gold-light); }
+.contact-info p { color: var(--text-light-soft); margin-bottom: 30px; font-size: 1.1rem; }
+
+.contact-block {
+  display: flex;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-dark);
+}
+.contact-block:last-child { border-bottom: none; }
+.contact-block__icon {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(111,191,58,0.12);
+  border: 1px solid var(--it-green-bright);
+  color: var(--it-green-bright);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-block__label {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  color: var(--text-light-soft);
+  margin-bottom: 4px;
+}
+.contact-block__value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+.contact-block__value a { transition: color .25s; }
+.contact-block__value a:hover { color: var(--it-green-bright); }
+
+.contact-cta {
+  position: relative;
+  padding: 50px 40px;
+  background: linear-gradient(135deg, rgba(111,191,58,0.10), rgba(200,54,43,0.08));
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  text-align: center;
+}
+.contact-cta__title {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+  color: var(--text-light);
+}
+.contact-cta .eyebrow { color: var(--it-green-bright); }
+.contact-cta__phone {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  letter-spacing: 0.06em;
+  color: #f5e9c8;
+  margin: 16px 0 24px;
+  transition: color .25s;
+}
+.contact-cta__phone:hover { color: var(--it-green-bright); }
+
+footer {
+  padding: 60px 28px 40px;
+  background: #050505;
+  color: var(--text-light);
+  border-top: 1px solid var(--line-dark);
+  text-align: center;
+}
+.footer__brand {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 3rem;
+  margin-bottom: 6px;
+}
+.footer__sub {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.4em;
+  color: var(--text-light-soft);
+  font-size: 0.8rem;
+  margin-bottom: 30px;
+}
+.footer__legal {
+  max-width: 720px;
+  margin: 30px auto 0;
+  font-size: 0.85rem;
+  color: var(--text-light-soft);
+  line-height: 1.6;
+}
+.footer__legal a { color: var(--it-green-bright); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float-call {
+  position: fixed;
+  bottom: 22px; right: 22px;
+  z-index: 60;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: var(--it-green);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px rgba(74,139,44,0.35);
+  transition: transform .25s;
+  animation: pulseRing 2.4s infinite;
+}
+.float-call:hover { transform: scale(1.08); }
+@keyframes pulseRing {
+  0%, 100% { box-shadow: 0 12px 30px rgba(74,139,44,0.35), 0 0 0 0 rgba(74,139,44,0.4); }
+  50% { box-shadow: 0 12px 30px rgba(74,139,44,0.35), 0 0 0 14px rgba(74,139,44,0); }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="nav__brand">Oliviero<span class="flag-mini" style="width:24px;height:3px;"><span></span><span></span><span></span></span></a>
+  <ul class="nav__menu" id="navMenu">
+    <li><a href="#offres">Offres</a></li>
+    <li><a href="#pizzas">Pizzas</a></li>
+    <li><a href="#carte">La Carte</a></li>
+    <li><a href="#tacos">Tacos</a></li>
+    <li><a href="#texmex">Tex-Mex</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:0188496242" class="nav__cta">Commander · 01 88 49 62 42</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="hero__deco hero__deco--1" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 5 C 25 15, 15 35, 50 55 C 85 35, 75 15, 50 5 Z" fill="#2e7d32" opacity="0.7"/>
+    <path d="M50 5 L50 55" stroke="#1b5e20" stroke-width="0.5"/>
+  </svg>
+  <svg class="hero__deco hero__deco--2" viewBox="0 0 100 60" fill="none">
+    <path d="M50 5 C 25 15, 15 35, 50 55 C 85 35, 75 15, 50 5 Z" fill="#388e3c" opacity="0.6"/>
+    <path d="M50 5 L50 55" stroke="#1b5e20" stroke-width="0.5"/>
+  </svg>
+  <svg class="hero__deco hero__deco--3" viewBox="0 0 100 60" fill="none">
+    <path d="M50 5 C 25 15, 15 35, 50 55 C 85 35, 75 15, 50 5 Z" fill="#2e7d32" opacity="0.5"/>
+  </svg>
+  <span class="hero__dot hero__dot--1"></span>
+  <span class="hero__dot hero__dot--2"></span>
+  <span class="hero__dot hero__dot--3"></span>
+
+  <div class="hero__inner">
+    <span class="hero__eyebrow eyebrow">Pizzeria · Romainville</span>
+    <h1 class="hero__title">Oliviero<span class="flag-mini"><span></span><span></span><span></span></span></h1>
+    <div class="hero__sub">PIZZA &nbsp;·&nbsp; PASTA</div>
+    <p class="hero__lead">L'authentique cuisine italienne, des produits soigneusement sélectionnés, et la convivialité d'un quartier. Livraison gratuite, 7 jours sur 7.</p>
+    <div class="hero__actions">
+      <a href="tel:0188496242" class="btn btn--primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Commander
+      </a>
+      <a href="#carte" class="btn btn--ghost">Voir la carte</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll">Découvrir</div>
+</header>
+
+<section class="offers" id="offres">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">Offres du moment</span>
+      <h2 class="section-head__title">Buon Appetito</h2>
+      <p class="section-head__lead">Des promotions toute l'année pour partager la joie de la table italienne.</p>
+    </div>
+
+    <div class="offers__grid">
+      <article class="offer-card reveal">
+        <span class="offer-card__icon">À emporter</span>
+        <div class="offer-card__label">Offre</div>
+        <h3 class="offer-card__deal">1 pizza achetée<br/>= <em>1 pizza offerte</em></h3>
+        <p class="offer-card__note">* Offre non cumulable. Valable sur Senior et Mega de prix identique ou inférieur.</p>
+      </article>
+
+      <article class="offer-card reveal">
+        <span class="offer-card__icon">En livraison</span>
+        <div class="offer-card__label">Offre</div>
+        <h3 class="offer-card__deal">1 pizza achetée<br/>= <em>la 2ème à -50%</em></h3>
+        <p class="offer-card__note">* Offre non cumulable. Valable sur Senior et Mega de prix identique ou inférieur.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pizzas" id="pizzas">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">La Carta</span>
+      <h2 class="section-head__title">Pizzas</h2>
+      <p class="section-head__lead">Cuites au four à la commande, sur une pâte fine et croustillante.</p>
+    </div>
+
+    <div class="pizza-formats reveal">
+      <span><strong>Junior</strong> individuelle</span>
+      <span class="sep"></span>
+      <span><strong>Senior</strong> classique</span>
+      <span class="sep"></span>
+      <span><strong>Mega</strong> à partager</span>
+    </div>
+
+    <div class="pizza-grid reveal" id="pizzaGrid"></div>
+
+    <p class="halal-note"><strong>Halal —</strong> Toutes nos viandes sont halal. Chorizo de bœuf, lardons de veau, jambon de dinde.</p>
+  </div>
+</section>
+
+<section class="menu-grid" id="carte">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">Notre carte</span>
+      <h2 class="section-head__title">La Carta</h2>
+      <p class="section-head__lead">Pâtes, salades, panizzas et gratins — tout fait maison.</p>
+    </div>
+
+    <div class="menu-blocks">
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Pâtes</h3>
+        </div>
+        <div class="menu-card__sub">Penne ou Linguine au choix · Emmental ou Parmesan</div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>4 Fromages</span><span>9,50 €</span></div><div class="desc">Sauce crémeuse, gorgonzola, mozzarella, chèvre, parmesan.</div></li>
+          <li><div class="name"><span>Carbonara</span><span>9,50 €</span></div><div class="desc">Sauce crémeuse, lardons fumés, jaune d'œuf.</div></li>
+          <li><div class="name"><span>Forestière</span><span>9,50 €</span></div><div class="desc">Sauce crémeuse, escalope de poulet, champignons.</div></li>
+          <li><div class="name"><span>Fruits de Mer</span><span>10,50 €</span></div><div class="desc">Sauce tomate, cocktail de fruits de mer, persillade, citron.</div></li>
+          <li><div class="name"><span>Saumon</span><span>10,50 €</span></div><div class="desc">Sauce crémeuse, saumon, parmesan, citron.</div></li>
+        </ul>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Salades</h3>
+          <span class="menu-card__price-tag">9,50 €</span>
+        </div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>César</span></div><div class="desc">Salade, tomates cerises, poulet crispy, copeaux de parmesan, croûtons, sauce césar.</div></li>
+          <li><div class="name"><span>Niçoise</span></div><div class="desc">Salade, tomates cerises, thon, poivrons, oignons, pommes de terre, olives.</div></li>
+          <li><div class="name"><span>Saumon</span></div><div class="desc">Salade, tomates cerises, saumon fumé, concombres, pommes de terre, olives.</div></li>
+          <li><div class="name"><span>Veggie</span></div><div class="desc">Salade, tomates cerises, aubergines, feta, poivrons, citrons.</div></li>
+        </ul>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Panizzas</h3>
+          <span class="menu-card__price-tag">6,50 €</span>
+        </div>
+        <div class="menu-card__sub" style="color: var(--it-red);">Panini frais avec pâte à pizza</div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>Saumon</span></div></li>
+          <li><div class="name"><span>Viande hachée</span></div></li>
+          <li><div class="name"><span>Thon</span></div></li>
+          <li><div class="name"><span>Jambon</span></div></li>
+          <li><div class="name"><span>4 Fromages</span></div></li>
+        </ul>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Gratins</h3>
+          <span class="menu-card__price-tag">8,50 €</span>
+        </div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>Boursin</span></div><div class="desc">Viande hachée, champignons, boursin, pommes de terre, mozzarella, crème.</div></li>
+          <li><div class="name"><span>Tartiflette</span></div><div class="desc">Lardons, pommes de terre, crème, reblochon, mozzarella.</div></li>
+          <li><div class="name"><span>4 Fromages</span></div><div class="desc">Gorgonzola, chèvre, mozzarella, reblochon, pommes de terre, crème.</div></li>
+          <li><div class="name"><span>Mexicain</span></div><div class="desc">Viande hachée, chorizo, poivrons, mozzarella, pommes de terre, crème.</div></li>
+          <li><div class="name"><span>Chicken</span></div><div class="desc">Émincé de poulet, poivrons, pommes de terre, mozzarella, crème.</div></li>
+          <li><div class="name"><span>Norvégien</span></div><div class="desc">Saumon, pommes de terre, crème, mozzarella.</div></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="street-food" id="tacos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">Spécialités</span>
+      <h2 class="section-head__title">Tacos &amp; Sandwichs</h2>
+      <p class="section-head__lead">Composez votre tacos sur mesure ou choisissez votre sandwich préféré.</p>
+    </div>
+
+    <!-- TACOS -->
+    <div class="street-food__block reveal">
+      <h3 class="street-food__title">Nos Tacos</h3>
+      <p class="street-food__subtitle">À composer · choisissez vos viandes et vos sauces.</p>
+
+      <div class="tacos-tiers">
+        <div class="tacos-tier">
+          <div class="tacos-tier__count">1 Viande</div>
+          <div class="tacos-tier__price">9,00 €</div>
+        </div>
+        <div class="tacos-tier">
+          <div class="tacos-tier__count">2 Viandes</div>
+          <div class="tacos-tier__price">10,00 €</div>
+        </div>
+        <div class="tacos-tier">
+          <div class="tacos-tier__count">3 Viandes</div>
+          <div class="tacos-tier__price">11,00 €</div>
+        </div>
+      </div>
+
+      <div class="tacos-options">
+        <div class="tacos-options__card">
+          <div class="tacos-options__title">Viandes au choix</div>
+          <ul class="tacos-options__list">
+            <li>Chicken Rouge</li>
+            <li>Chicken Jaune</li>
+            <li>Viande Hachée</li>
+            <li>Cordons-Bleus</li>
+            <li>Tenders Escalopes</li>
+            <li>Chicken Tikka</li>
+            <li>Chicken Curry</li>
+            <li>Merguez</li>
+          </ul>
+        </div>
+        <div class="tacos-options__card">
+          <div class="tacos-options__title">Sauces au choix</div>
+          <ul class="tacos-options__list">
+            <li>Ketchup</li>
+            <li>Mayonnaise</li>
+            <li>Algérienne</li>
+            <li>Barbecue</li>
+            <li>Samouraï</li>
+            <li>Curry</li>
+            <li>Harissa</li>
+            <li>Moutarde</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SANDWICHS -->
+    <div class="street-food__block reveal">
+      <h3 class="street-food__title">Nos Sandwichs</h3>
+      <p class="street-food__subtitle">Pain frais, garnitures généreuses.</p>
+
+      <div class="sandwichs-grid">
+        <article class="sandwich-card">
+          <div class="sandwich-card__name">Chicken Rouge</div>
+          <div class="sandwich-card__prices">
+            <div class="sandwich-card__price"><small>Seul</small><strong>9,00 €</strong></div>
+            <div class="sandwich-card__price"><small>Menu</small><strong>10,00 €</strong></div>
+          </div>
+        </article>
+        <article class="sandwich-card">
+          <div class="sandwich-card__name">Chicken Jaune</div>
+          <div class="sandwich-card__prices">
+            <div class="sandwich-card__price"><small>Seul</small><strong>9,00 €</strong></div>
+            <div class="sandwich-card__price"><small>Menu</small><strong>10,00 €</strong></div>
+          </div>
+        </article>
+        <article class="sandwich-card">
+          <div class="sandwich-card__name">Americain</div>
+          <div class="sandwich-card__prices">
+            <div class="sandwich-card__price"><small>Seul</small><strong>8,00 €</strong></div>
+            <div class="sandwich-card__price"><small>Menu</small><strong>10,00 €</strong></div>
+          </div>
+        </article>
+        <article class="sandwich-card">
+          <div class="sandwich-card__name">Crispy</div>
+          <div class="sandwich-card__prices">
+            <div class="sandwich-card__price"><small>Seul</small><strong>8,50 €</strong></div>
+            <div class="sandwich-card__price"><small>Menu</small><strong>10,00 €</strong></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="texmex" id="texmex">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">À grignoter</span>
+      <h2 class="section-head__title">Tex-Mex</h2>
+      <p class="section-head__lead">Pour accompagner ou pour une envie de croustillant.</p>
+    </div>
+
+    <div class="texmex-grid reveal" id="texmexGrid"></div>
+  </div>
+</section>
+
+<section class="sweets">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head__divider"><span class="line"></span><span class="flag-mini"><span></span><span></span><span></span></span><span class="line"></span></div>
+      <span class="section-head__eyebrow eyebrow">Pour finir</span>
+      <h2 class="section-head__title">Dolce Vita</h2>
+    </div>
+
+    <div class="sweets-grid">
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Desserts</h3>
+          <span class="menu-card__price-tag">3,50 €</span>
+        </div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>Tiramisu</span></div></li>
+          <li><div class="name"><span>Tarte au Daim</span></div></li>
+          <li><div class="name"><span>Tarte au Citron</span></div></li>
+          <li><div class="name"><span>Cheesecake</span></div></li>
+          <li><div class="name"><span>Muffin</span></div></li>
+          <li><div class="name"><span>Fondant au chocolat</span></div></li>
+        </ul>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Glaces</h3>
+        </div>
+        <div class="menu-card__sub">Häagen-Dazs</div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>Pot 100 ml</span><span>3,50 €</span></div></li>
+          <li><div class="name"><span>Pot 500 ml</span><span>7,50 €</span></div></li>
+        </ul>
+      </article>
+
+      <article class="menu-card reveal">
+        <div class="menu-card__header">
+          <h3 class="menu-card__title">Boissons</h3>
+        </div>
+        <ul class="menu-card__items">
+          <li><div class="name"><span>Canette 33 cl</span><span>1,50 €</span></div></li>
+          <li><div class="name"><span>Eau 50 cl</span><span>1,50 €</span></div></li>
+          <li><div class="name"><span>Bouteille 1,5 L</span><span>3,00 €</span></div></li>
+          <li><div class="name"><span>Bouteille 2 L</span><span>3,50 €</span></div></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Nous trouver</span>
+        <h2>Venez nous voir</h2>
+        <p>Sur place, à emporter ou livré chez vous — Oliviero vous accueille tous les jours, midi et soir.</p>
+
+        <div class="contact-block">
+          <div class="contact-block__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-block__label">Adresse</div>
+            <div class="contact-block__value">94 route de Montreuil<br/>93230 Romainville</div>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-block__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-block__label">Horaires · 7j/7</div>
+            <div class="contact-block__value" style="font-size:1rem;">Lundi → Samedi · 11h-14h &nbsp;&amp;&nbsp; 18h-22h30<br/>Dimanche · 18h-22h30</div>
+          </div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-block__icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+          </div>
+          <div>
+            <div class="contact-block__label">Bon à savoir</div>
+            <div class="contact-block__value" style="font-size:1rem;">CB · Tickets Restaurant · Espèces<br/>Minimum livraison : 15 €</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta reveal">
+        <div class="contact-cta__title">Livraison gratuite</div>
+        <span class="eyebrow">Commandez maintenant</span>
+        <a href="tel:0188496242" class="contact-cta__phone">01 88 49 62 42</a>
+
+        <a href="tel:0188496242" class="btn btn--primary" style="width:100%; justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Appeler
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer__brand">Oliviero</div>
+  <div class="footer__sub">PIZZA · PASTA</div>
+
+  <div class="flag-mini" style="margin: 0 auto; width: 60px; height: 4px;"><span></span><span></span><span></span></div>
+
+  <p class="footer__legal">
+    Photos non contractuelles. Offres non cumulables. Tarifs sous réserve d'erreurs typographiques. La direction se réserve le droit de modifier ou de supprimer ses offres sans préavis. Pour votre santé, bougez plus — <a href="https://www.mangerbouger.fr" target="_blank" rel="noopener">www.mangerbouger.fr</a>
+  </p>
+  <p class="footer__legal" style="margin-top: 14px;">© 2026 Oliviero · 94 route de Montreuil, 93230 Romainville</p>
+</footer>
+
+<a href="tel:0188496242" class="float-call" aria-label="Appeler">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+const pizzas = [
+  { name: "Margherita", desc: "Sauce tomate, mozzarella, origan.", j: 7.5, s: 13.5, m: 20 },
+  { name: "Napolitaine", desc: "Sauce tomate, mozzarella, anchois, câpres, olives, origan.", j: 9, s: 14.5, m: 21 },
+  { name: "Végétarienne", desc: "Sauce tomate, mozzarella, poivrons, champignons, olives, oignon, origan.", j: 9, s: 15.5, m: 22 },
+  { name: "Chorizo", desc: "Sauce tomate, mozzarella, chorizo, champignons, olives, origan.", j: 9, s: 15.5, m: 22 },
+  { name: "Calzone", desc: "Sauce tomate, mozzarella, jambon, œuf, origan.", j: 9, s: 15.5, m: 22 },
+  { name: "Reine", desc: "Sauce tomate, mozzarella, jambon, œuf, champignons, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Orientale", desc: "Sauce tomate, mozzarella, merguez, poivrons, œuf, olives, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Chèvre Miel", desc: "Crème fraîche, mozzarella, chèvre, miel.", j: 9, s: 16.5, m: 23 },
+  { name: "4 Fromages", desc: "Sauce tomate, mozzarella, chèvre, gorgonzola, parmesan, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Fermière", desc: "Sauce tomate, mozzarella, émincé de poulet, champignons, pomme de terre, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Pêcheur", desc: "Sauce tomate, mozzarella, thon, champignons, œuf, oignon rouge, olives, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Printanière", desc: "Sauce tomate, mozzarella, viande hachée, aubergine, poivrons, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "4 Saisons", desc: "Sauce tomate, mozzarella, jambon, champignons, artichauts, poivrons, olives, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Boursin", desc: "Crème fraîche, mozzarella, viande hachée, pommes de terre, boursin, origan.", j: 9, s: 16.5, m: 23 },
+  { name: "Norvégienne", desc: "Crème fraîche, mozzarella, saumon, citron.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Fruits de Mer", desc: "Sauce tomate, mozzarella, fruits de mer, persillade, citron, origan.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Savoyarde", desc: "Crème fraîche, mozzarella, jambon, pomme de terre, raclette, origan.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Tartiflette", desc: "Crème fraîche, mozzarella, lardons fumés, pommes de terre, reblochon, oignons, origan.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Buffalo", desc: "Sauce tomate, mozzarella, viande hachée, poivrons, sauce barbecue, origan.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Indienne", desc: "Crème fraîche, mozzarella, émincé de poulet, sauce curry, oignons, poivrons, origan.", j: 9.5, s: 17.5, m: 24 },
+  { name: "Mexicaine", desc: "Sauce tomate, mozzarella, viande hachée, chorizo, poivrons, olives, origan.", j: 9.5, s: 17.5, m: 24 },
+];
+const fmtPrice = n => n.toString().replace('.', ',') + ' €';
+
+document.getElementById('pizzaGrid').innerHTML = pizzas.map((p, i) => {
+  const num = String(i + 1).padStart(2, '0');
+  return `
+    <article class="pizza-card">
+      <div class="pizza-card__num">${num}</div>
+      <div class="pizza-card__body">
+        <div class="pizza-card__head">
+          <div class="pizza-card__name">${p.name}</div>
+          <div class="pizza-card__prices">
+            <span><small>J</small>${fmtPrice(p.j)}</span>
+            <span><small>S</small>${fmtPrice(p.s)}</span>
+            <span><small>M</small>${fmtPrice(p.m)}</span>
+          </div>
+        </div>
+        <div class="pizza-card__desc">${p.desc}</div>
+      </div>
+    </article>
+  `;
+}).join('');
+
+// Icônes SVG line-art élégantes (uniformes, en doré)
+const icons = {
+  nuggets: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11c0-3 2-5 5-5s4 1 5 2 4 1 4 4-2 5-5 6-5 1-7 0-3-4-2-7z"/><circle cx="9" cy="11" r="0.5" fill="currentColor"/><circle cx="13" cy="13" r="0.5" fill="currentColor"/><circle cx="11" cy="15" r="0.5" fill="currentColor"/></svg>',
+  wings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18c2-6 6-10 12-12-1 4-3 8-6 11-2 2-4 2-6 1z"/><path d="M10 12l3-3M8 14l3-3M9 17l3-3"/></svg>',
+  tenders: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4c-1 3 0 6 2 9s5 5 8 7c1-3 0-7-2-10s-5-5-8-6z"/><path d="M9 9l1 2M11 11l1 2M13 13l1 2"/></svg>',
+  jalapenos: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18c0-4 2-8 6-10 4-1 7 1 8 3-2 0-4 2-6 5s-5 4-8 2z"/><path d="M16 8c1-2 2-3 3-3l-1 2 2-1c-1 2-2 3-4 2z"/></svg>',
+  sticks: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16" rx="1.5"/><rect x="14" y="4" width="4" height="16" rx="1.5"/><path d="M7 8h2M15 8h2M7 12h2M15 12h2M7 16h2M15 16h2"/></svg>',
+  rings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="12" r="5"/><circle cx="9" cy="12" r="2"/><circle cx="16" cy="13" r="4"/><circle cx="16" cy="13" r="1.5"/></svg>',
+  fries: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l1 10h12l1-10"/><path d="M4 10h16"/><path d="M9 10V4M12 10V3M15 10V5"/></svg>',
+  potatoes: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9c2-1 5 0 7 1s5 1 7 0c1 3-1 7-4 9s-8 1-10-2-1-7 0-8z"/><path d="M9 13l1 1M13 12l1 1M11 16l1 1"/></svg>',
+};
+
+const texmex = [
+  { name: "Nuggets", icon: icons.nuggets, prices: [["6 pièces","5,50 €"],["10 pièces","8,50 €"]] },
+  { name: "Wings", icon: icons.wings, prices: [["6 pièces","5,50 €"],["10 pièces","8,50 €"]] },
+  { name: "Tenders", icon: icons.tenders, prices: [["4 pièces","5,50 €"],["8 pièces","9,50 €"]] },
+  { name: "Jalapeños", icon: icons.jalapenos, prices: [["6 pièces","5,50 €"],["10 pièces","7,50 €"]] },
+  { name: "Sticks Mozza", icon: icons.sticks, prices: [["6 pièces","5,50 €"],["10 pièces","7,50 €"]] },
+  { name: "Onion Rings", icon: icons.rings, prices: [["6 pièces","3,50 €"],["10 pièces","5,50 €"]] },
+  { name: "Frites", icon: icons.fries, prices: [["Portion","3,50 €"]] },
+  { name: "Potatoes", icon: icons.potatoes, prices: [["Portion","3,50 €"]] },
+];
+document.getElementById('texmexGrid').innerHTML = texmex.map(t => `
+  <article class="texmex-card">
+    <div class="texmex-card__icon">${t.icon}</div>
+    <div class="texmex-card__name">${t.name}</div>
+    <div class="texmex-card__prices">
+      ${t.prices.map(p => `<span>${p[0]}<strong>${p[1]}</strong></span>`).join('')}
+    </div>
+  </article>
+`).join('');
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+const burger = document.getElementById('burger');
+const navMenu = document.getElementById('navMenu');
+burger?.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
